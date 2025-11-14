@@ -37,14 +37,25 @@ flowchart TD
 ## Git 分支示意
 
 ```mermaid
-%% Git Graph: Simple branching workflow
+%% Git Graph: 最近 10 天的完整分支與提交紀錄
 gitGraph
-    commit id: "初始化"
-    branch feature/ui-adjustments
-    checkout feature/ui-adjustments
-    commit id: "版面調整"
-    commit id: "CTA 更新"
+    commit id: "f9c9887 初始提交 (main)"
+    branch codex_create_landing_page
+    checkout codex_create_landing_page
+    commit id: "1ea04c3 建立落地頁 (PR #2)"
     checkout main
-    commit id: "內容優化"
-    merge feature/ui-adjustments
+    merge codex_create_landing_page id: "c3f2f51 合併 PR #2"
+    commit id: "b10be05 更新 index.html"
+    checkout codex_create_landing_page
+    commit id: "cca464c 上傳素材 (branch: codex/add-uploaded-photo-to-website)"
+    branch codex_add_uploaded_photo
+    checkout codex_add_uploaded_photo
+    commit id: "0bbd6b6 加入 Hero 照片"
+    checkout codex_create_landing_page
+    merge codex_add_uploaded_photo id: "e51ab1a 合併 PR #3"
+    checkout main
+    merge codex_create_landing_page id: "96f3c45 合併 PR #4"
+    branch work
+    checkout work
+    commit id: "76ae873 新增 gitGraph 文件更新"
 ```
