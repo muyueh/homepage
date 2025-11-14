@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>李慕約顧問課程｜生成式 AI 成長藍圖</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #f97316;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.92), rgba(99, 102, 241, 0.85)), url('hero-bg.jpg') center/cover;
+      color: #fff;
+      padding: 6rem 1.5rem 7rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+      margin-bottom: 2.5rem;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--secondary);
+      color: #fff;
+      box-shadow: 0 20px 35px rgba(249, 115, 22, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.15);
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 4.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.6rem;
+      width: 3.5rem;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 999px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.6rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 10px;
+      height: 10px;
+      background: var(--secondary);
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    blockquote {
+      margin: 2rem 0;
+      padding: 1.5rem 2rem;
+      border-left: 5px solid var(--primary);
+      background: rgba(79, 70, 229, 0.08);
+      border-radius: 1rem;
+      font-size: 1.05rem;
+      color: var(--gray);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      background: #fff;
+      padding: 1.75rem;
+      border-radius: 1rem;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .timeline-item span {
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .pricing .card {
+      text-align: center;
+      position: relative;
+    }
+
+    .pricing .card.highlight {
+      border: 2px solid var(--secondary);
+      transform: translateY(-8px);
+    }
+
+    .cta-bar {
+      background: var(--dark);
+      color: #fff;
+      padding: 3rem 1.5rem;
+      border-radius: 1.5rem;
+      text-align: center;
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5f5;
+      padding: 2.5rem 1.5rem;
+    }
+
+    footer .footer-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    footer ul li::before {
+      background: rgba(148, 163, 184, 0.4);
+    }
+
+    @media (max-width: 640px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-bar {
+        padding: 2.5rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>李慕約的生成式 AI 策略顧問課程</h1>
+    <p>結合 15 年企業顧問實戰與超過 1.5 萬人參與的生成式 AI 社群能量，帶你打造可量化的成長藍圖，快速掌握 AI 驅動的商業機會。</p>
+    <div class="cta-group">
+      <a class="btn btn-primary" href="#booking">預約 1:1 策略諮詢</a>
+      <a class="btn btn-secondary" href="#syllabus">下載課程大綱</a>
+      <a class="btn" style="background:#fff;color:var(--primary);border:1px solid rgba(79,70,229,0.3);" href="#community">加入 AI 社群</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="two-column">
+        <div>
+          <h2>為什麼選擇李慕約？</h2>
+          <p>李慕約，李慕約公司創辦人與執行長，擁有台大工商管理背景與企業顧問、資訊系統開發經驗。自 2014 年起帶領團隊協助中華電信、遠傳、玉山金控、AIT 與 WHO 等機構完成數位轉型，並在 2022 年發起生成式 AI 年會，至今累積 1.5 萬+ 學習者。</p>
+          <div class="stats-grid">
+            <div class="stat">
+              <strong>15,000+</strong>
+              <span>生成式 AI 年會與社群參與人次</span>
+            </div>
+            <div class="stat">
+              <strong>97%</strong>
+              <span>社群每月小聚滿意度</span>
+            </div>
+            <div class="stat">
+              <strong>500萬</strong>
+              <span>線上轉播一週營收（新台幣）</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="tag">顧問專長</div>
+            <h3>策略 × 系統 × 成果</h3>
+            <ul>
+              <li>結構化策略規劃與市場定位</li>
+              <li>AI 導入三大關鍵：系統、使用、資料</li>
+              <li>跨部門協作流程與績效追蹤</li>
+              <li>客製化資訊系統與資料視覺化</li>
+              <li>企業級 AI 培訓與內訓規劃</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learn">
+      <h2>課程與顧問服務亮點</h2>
+      <div class="two-column">
+        <div class="card">
+          <h3>線上課程＋直播工作坊</h3>
+          <p>每週上線的主題課程搭配直播解析，包含最新的生成式 AI 案例、工具操作與企業導入指引。提供錄播回放與課程筆記，確保團隊隨時跟上趨勢。</p>
+        </div>
+        <div class="card">
+          <h3>客製化 1:1 顧問諮詢</h3>
+          <p>依據企業階段、產業特性與目標，制定可量測的成長計畫。從策略設計、組織共識到導入執行，由李慕約親自陪跑。</p>
+        </div>
+        <div class="card">
+          <h3>AI 實戰演練與社群支持</h3>
+          <p>每月 Office Hour 與小聚，聚焦實作問題與案例共創，打造具黏著度的社群學習環境，加速策略落地。</p>
+        </div>
+        <div class="card">
+          <h3>可視化工具與 SOP</h3>
+          <p>提供 KPI 儀表板範本、專案追蹤模板與成效檢核流程，協助團隊建立長期可複製的成長機制。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="case">
+      <h2>實際成果與案例</h2>
+      <blockquote>
+        「導入李慕約顧問框架後，透過生成式 AI 自動化與數據儀表板，半年內營收成長 30%，團隊專案交付速度加快 2 倍。」— 科技新創創辦人 林小姐
+      </blockquote>
+      <blockquote>
+        「協助我們從 0 到 1 建構 AI 產品線與服務流程，成功開發新市場區隔，企業內訓滿意度達 95%。」— 電商營運主管 陳先生
+      </blockquote>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>2014</span>
+          <p>創立李慕約公司，專注客製化資訊系統與資料視覺化服務。</p>
+        </div>
+        <div class="timeline-item">
+          <span>2018-2021</span>
+          <p>協助電信、金融與政府組織導入數據決策與數位轉型方案，建立跨部門敏捷流程。</p>
+        </div>
+        <div class="timeline-item">
+          <span>2022</span>
+          <p>發起生成式 AI 年會，從 100 人起步至實體 800 人、線上 500 萬營收，形塑台灣最大 AI 學習社群。</p>
+        </div>
+        <div class="timeline-item">
+          <span>2024-2025</span>
+          <p>推出 365 AI 訂閱計畫、企業 AI 內訓與顧問加速器，持續擴大產業落地案例。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="syllabus">
+      <h2>六週密集課程地圖</h2>
+      <div class="two-column">
+        <div class="card">
+          <h3>第 1 週：策略定位與市場洞察</h3>
+          <ul>
+            <li>企業現況診斷與競品分析</li>
+            <li>建立差異化價值主張與目標客群</li>
+            <li>實作：AI 協助的市場調研流程</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>第 2 週：品牌體驗與內容設計</h3>
+          <ul>
+            <li>品牌敘事與視覺識別指南</li>
+            <li>用戶旅程設計與互動優化</li>
+            <li>實作：AI 生成內容工作流</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>第 3 週：營運流程與組織對齊</h3>
+          <ul>
+            <li>跨部門協作與敏捷儀式</li>
+            <li>OKR/KPI 設計與追蹤節奏</li>
+            <li>實作：AI 導入 SOP 與自動化腳本</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>第 4 週：數據治理與決策儀表板</h3>
+          <ul>
+            <li>資料收集、清理與安全治理</li>
+            <li>建立即時監測的可視化儀表板</li>
+            <li>實作：Power BI／Looker Studio 報表</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>第 5 週：商業模型與成長策略</h3>
+          <ul>
+            <li>AI 賦能產品／服務組合設計</li>
+            <li>新市場開發與營收引擎建立</li>
+            <li>實作：成長試驗與資料回饋迴圈</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>第 6 週：執行計畫與長期陪跑</h3>
+          <ul>
+            <li>專案路線圖與資源配置</li>
+            <li>成效檢核與優化節奏</li>
+            <li>一對一策略檢視與行動計畫</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h2>方案與投資</h2>
+      <div class="pricing">
+        <div class="card">
+          <h3>核心課程方案</h3>
+          <p class="tag">NT$ 18,800</p>
+          <ul>
+            <li>線上課程全套錄播</li>
+            <li>六週作業與實戰模板</li>
+            <li>AI 工具包與案例資料庫</li>
+            <li>專屬線上社群與每月直播</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <h3>VIP 顧問方案</h3>
+          <p class="tag">NT$ 38,800</p>
+          <ul>
+            <li>包含核心課程方案全部內容</li>
+            <li>三次 60 分鐘 1:1 顧問諮詢</li>
+            <li>專屬生成式 AI 導入藍圖</li>
+            <li>團隊工作坊與內部簡報材料</li>
+          </ul>
+          <a class="btn btn-primary" href="#booking">立即預約</a>
+        </div>
+        <div class="card">
+          <h3>企業內訓方案</h3>
+          <p class="tag">依專案報價</p>
+          <ul>
+            <li>客製化課程模組與案例</li>
+            <li>跨部門協作工作坊</li>
+            <li>AI 導入顧問陪跑 90 天</li>
+            <li>專屬資料治理與安全諮詢</li>
+          </ul>
+          <a class="btn btn-secondary" href="#contact">聯絡團隊</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <h2>生成式 AI 社群與資源</h2>
+      <div class="two-column">
+        <div class="card">
+          <h3>台灣最大 AI 學習社群</h3>
+          <p>每月小聚與線上論壇，串聯超過 900 位跨產業菁英，共同探索 AI 實戰應用。加入即可獲得最新活動名額與產業報告。</p>
+        </div>
+        <div class="card">
+          <h3>365 AI 訂閱計畫</h3>
+          <p>每月更新 8.5 小時以上的 AI 工具課程、情境案例與工作模板，搭配 Office Hour 互動，陪你在日常工作中落地 AI。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="cta-bar">
+        <h2>準備好打造你的 AI 成長藍圖了嗎？</h2>
+        <p>留下聯絡方式，我們將提供策略問診表與免費 30 分鐘諮詢，協助你評估當前資源、設定導入優先順序，啟動下一階段成長。</p>
+        <a class="btn btn-primary" href="mailto:hello@limuyo.com">預約顧問諮詢</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div>
+        <h3>李慕約顧問團隊</h3>
+        <p>專注生成式 AI 策略、客製化資訊系統與企業轉型顧問服務，協助企業用 AI 打造持續成長的競爭優勢。</p>
+      </div>
+      <div>
+        <h3>聯絡我們</h3>
+        <ul>
+          <li>Email：hello@limuyo.com</li>
+          <li>LINE：@limuyo</li>
+          <li>LinkedIn／Facebook：搜尋「李慕約」</li>
+          <li>活動合作：press@limuyo.com</li>
+        </ul>
+      </div>
+      <div>
+        <h3>媒體與認證</h3>
+        <ul>
+          <li>商業週刊、創業家等專題報導</li>
+          <li>IFBI 商業分析師認證</li>
+          <li>Scrum Master、品牌策略顧問資格</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.85rem;color:#94a3b8;">© 2025 李慕約顧問團隊｜服務條款｜隱私政策</p>
+  </footer>
+</body>
+</html>
